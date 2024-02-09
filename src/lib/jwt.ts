@@ -27,14 +27,14 @@ const createRefreshToken = (payload: any) => {
 
 export const createAuth = async (p: any) => {
   try {
-    const gen = await Promise.all([
+    const [ac, rt] = await Promise.all([
       createAccessToken(p),
       createRefreshToken(p),
     ]);
 
     return {
-      accessToken: String(gen[0]),
-      refreshToken: String(gen[1]),
+      accessToken: String(ac),
+      refreshToken: String(rt),
     };
   } catch (error) {
     throw error;
