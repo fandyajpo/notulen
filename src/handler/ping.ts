@@ -2,10 +2,14 @@ import { Request, Response } from "express";
 
 interface IPing {
   ping(req: Request, res: Response): Express.Response;
+  health(req: Request, res: Response): Express.Response;
 }
 
 class PingHandler implements IPing {
   ping(req: Request, res: Response) {
+    return res.json({ d: "test" });
+  }
+  health(req: Request, res: Response) {
     return res.json({ d: "test" });
   }
 }
